@@ -1,0 +1,13 @@
+button {
+    color: whitesmoke;
+    background-color: rgb(57, 57, 57);
+    margin: 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    button {
+        color: whitesmoke;
+        background-color: rgb(57, 57, 57);
+        margin: 20px 50px;
+    }
+}

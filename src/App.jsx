@@ -1,0 +1,64 @@
+import { useState } from 'react';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import Scores from './components/Scores';
+import Members from './components/Members';
+import Register from './components/Register';
+import PrivateRoute from './components/PrivateRoute';
+
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/scores-admin"
+            element={
+              <PrivateRoute>
+                <Scores admin={true} instrument='none' />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/scores"
+            element={
+              <Scores admin={false} instrument="none" />
+            }
+          />
+          <Route
+            path="/members"
+            element={
+              <PrivateRoute>
+                <Members />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PrivateRoute>
+                <Register />
+              </PrivateRoute>
+            }
+          />
+          
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default App;
+////////////////////////////////// L A T E R //////////////////////////////////
+{/* <Route path="*" element={<NoPage />} /> */}
