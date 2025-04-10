@@ -45,10 +45,17 @@ function Dashboard() {
     return (
         <>
             <h1>Dashboard -New</h1>
-            <button onClick={handleSignOut}>Sign Out</button>
+            {/* <button onClick={handleSignOut}>Sign Out</button>
             <button onClick={() => redirect("members")}>Members</button>
             <button onClick={() => redirect("scores")}>Scores</button>
-            <button onClick={() => redirect("register")}>Register</button>
+            <button onClick={() => redirect("register")}>Register</button> */}
+
+
+HERE
+
+
+
+
         </>
     );
 }
