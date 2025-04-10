@@ -1,5 +1,5 @@
 import './Members.css';
-import { collection, getFirestore, onSnapshot, addDoc } from 'firebase/firestore';
+import { collection, getFirestore, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 
 function Members() {
@@ -90,6 +90,13 @@ function Members() {
   const sortedMembers = filteredMembers.sort((a, b) =>  a.regOrder - b.regOrder);
 
   const uniqueInstruments = [...new Set(members.map(member => member.instrument))];
+
+async function changeActive(memberId, { turnisactive }) {
+    const memberRef = doc(db, "members", memberId);  
+    await updateDoc(memberRef, {
+      isActive: turnisactive
+    });
+  }  
 
   return (
     <>
@@ -201,13 +208,17 @@ function Members() {
                     <td>{member.tp}</td>
                     <td>
                       {member.isActive ? (
-                        <span className="material-icons" style={{ color: 'green' }}>
-                          done
-                        </span>
+                        <button onClick={() => changeActive(member.id, { turnisactive: false })}>
+                          <span className="material-icons" style={{ color: 'green' }}>
+                            done
+                          </span>
+                        </button>
                       ) : (
-                        <span className="material-icons" style={{ color: 'red' }}>
-                          clear
-                        </span>
+                        <button onClick={() => changeActive(member.id, { turnisactive: true })}>
+                          <span className="material-icons" style={{ color: 'red' }}>
+                            clear
+                          </span>
+                        </button>
                       )}
                     </td>
                   </tr>
