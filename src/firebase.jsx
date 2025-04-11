@@ -7,6 +7,8 @@ import { getStorage } from "firebase/storage";
 
 // Runs as a secret variable in the github.io version
 // Runs as normal variables in localhost (from .env)
+
+// IDS v2
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
