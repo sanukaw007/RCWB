@@ -1,0 +1,251 @@
+h1 {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    top: 0%;
+}
+
+html, body, .container {
+    margin: 0;
+}
+
+body{
+    padding-left: 1.5%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.right-panel {
+    flex: 7;
+}
+.left-panel {
+    flex: 3;
+    display: block;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    float: left;
+    margin-top: -10px;
+    width: 95%;
+}
+
+.tablediv {
+    top: 0;
+    height: 75vh;
+    overflow-y: auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    vertical-align: text-top;
+}
+
+th {
+    font-size: x-large;
+    margin-top: 0;
+}
+
+tr:nth-child(even) {
+    background-color: #1d1d1d;
+}
+
+.filter {
+    float: left;
+    margin-top: 2px;
+    background-color: #262626;
+    color: whitesmoke;
+    font-weight: 600;
+    border-radius: 7px;
+}
+
+.filter ::placeholder {
+    opacity: 0.9;
+    color: whitesmoke;
+}
+
+#thtop {
+    padding-top: 20px;
+    vertical-align: text-top;
+}
+
+.left-panel ::placeholder {
+    color: #262626;
+}
+
+.limit-table-width {
+    width: 100px;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    color: #0000EE;
+  }
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+    background: #1d1d1d;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb {
+    background: #464646;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #505050;
+}
+
+#member-form {
+    width: 350px;
+    margin: 0px 10px auto 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    float: left;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+.form-group select,
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="tel"]  {
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: black;
+}
+.form-group select ::placeholder {
+    color: #262626;
+}
+
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-size: 20px;
+    padding-right: 40px;
+    background-color: whitesmoke;
+}
+
+#upload-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 50px auto 0px auto;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#upload-button:hover {
+    background-color: #0056b3;
+}
+  
+.switch {
+    margin-top: 0px;
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 12px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #3bff83;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #3bff83;
+}
+
+input:checked + .slider:before {
+    transform: translateX(8px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    body{
+        padding-left: 2%;
+    }
+    .left-panel {
+        display: none;
+    }
+    h1 {
+        margin-top: -10%;
+    }
+    .tablediv {
+        height: 70vh;
+        width: 97vw;
+    }
+}
