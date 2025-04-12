@@ -51,7 +51,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -59,5 +59,3 @@ function App() {
 }
 
 export default App;
-////////////////////////////////// L A T E R //////////////////////////////////
-{/* <Route path="*" element={<NoPage />} /> */}
