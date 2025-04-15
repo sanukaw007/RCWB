@@ -2,6 +2,7 @@
 
 ## Description
 This project is a React application that utilizes Firebase for backend services and includes various components for user interaction.
+This site was built using [GitHub Pages](https://sanukaw007.github.io/bandb/)
 
 ## Installation
 To install and run the project, follow these steps:
