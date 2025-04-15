@@ -5,7 +5,7 @@ import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { onAuthStateChanged } from "firebase/auth";
-import Logo from '/src/assets/wmslogo.png'
+import Logo from '/src/assets/bandlogo.png'
 import Note from '/src/assets/Note.svg';
 import Padlock from '/src/assets/Closed-Padlock.svg';
 

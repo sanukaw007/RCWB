@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import './Register.css';
 import { collection, getFirestore, onSnapshot, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { formatDate, checkStatus, AddPractice } from "./RegisterFuncs";
-import { exportToCsv } from "./csvutils";
+import { formatDate, checkStatus, AddPractice } from "../logic/RegisterFuncs";
+import { exportToCsv } from "../logic/csvutils";
+import Navbar from './Navbar';
 
 const formatDateForInput = (date) => {
   const year = date.getFullYear();
@@ -18,7 +19,7 @@ oneMonthAgo.setMonth(today.getMonth() - 1);
 const todayFormatted = formatDateForInput(today);
 const oneMonthAgoFormatted = formatDateForInput(oneMonthAgo);
 
-function Register() {
+function Register(props) {
   const [members, setMembers] = useState([]);
   const [practices, setPractices] = useState([]);
   const [selDatef, setDatefake] = useState(todayFormatted);
@@ -207,7 +208,11 @@ useEffect(() => {
 
   return (
     <>
-      <h1>Register</h1>
+      <Navbar scrolled={true} />
+      {showTable && (
+        <h1 id="register-heading">Register</h1>
+      )
+      }
       {showTable ? (
         <>
           <button id="tick-button" onClick={handleAddPractice}>

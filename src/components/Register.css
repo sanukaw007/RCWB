@@ -2,6 +2,14 @@
   align-self: center;
 }
 
+#register-heading {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  top: 0%;
+}
+
 #tick-button {
   display: inline-block;
   padding: 10px 20px;
@@ -12,7 +20,7 @@
   vertical-align: middle;
   color: whitesmoke;
   background-color: rgb(57, 57, 57);
-  margin: 10px 50px;
+  margin: 40px 50px 10px 50px;
 }
 
 .material-icons {
@@ -38,6 +46,7 @@
   max-height: 360px;
   width: 96vw;
   border: 2px solid #202020;
+  margin-left: 2vw;
 }
 
 .table-container table thead th {
