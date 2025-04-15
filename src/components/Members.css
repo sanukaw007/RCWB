@@ -235,7 +235,7 @@ input:checked + .slider:before {
         display: none;
     }
     h1 {
-        margin-top: -10%;
+        margin-top: 5%;
     }
     .tablediv {
         height: 70vh;

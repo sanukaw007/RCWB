@@ -113,3 +113,47 @@ button {
 .navbar-scrolled .navbar-space {
     width: 40px;
 }
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.menu-toggle .material-icons {
+    font-size: 28px;
+    color: white;
+}
+
+.navbar-panel {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #111;
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+    z-index: 9;
+}
+
+.navbar-panel button {
+    width: 100%;
+    margin: 0;
+}
+
+/* Responsive rules */
+@media (max-width: 768px) {
+    .navbar-center, .logoutnonresp, .navbar-band-logo, .rcwb-static {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar-panel.open {
+        display: flex;
+    }
+}

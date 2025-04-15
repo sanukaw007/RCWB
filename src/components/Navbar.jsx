@@ -5,9 +5,10 @@ import schoollogo from '../assets/royal.png';
 import westernlogo from '../assets/wmslogo.png';
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 function Navbar(props) {
+    const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(props.scrolled);
 
     useEffect(() => {
@@ -66,27 +67,35 @@ function Navbar(props) {
                 </a>
                 {scrolled &&
                     <>
-                    <div className={`navbar-space`}></div>
-                    <img src={bandlogo} onClick={() => {redirect("/dashboard")}} alt="Band Logo" className={`navbar-band-logo`} />
-                    <div className={`rcwb-static`} onClick={() => {redirect("/dashboard")}}>RCWB</div>
+                        <div className={`navbar-space`}></div>
+                        <img src={bandlogo} onClick={() => {redirect("/dashboard")}} alt="Band Logo" className={`navbar-band-logo`} />
+                        <div className={`rcwb-static`} onClick={() => {redirect("/dashboard")}}>RCWB</div>
                     </>
                 }
             </div>
             <div className="navbar-center">
-                {/* <button onClick={handleSignOut}>Sign Out</button> */}
                 <button onClick={() => redirect("members")}>Members</button>
                 <button onClick={() => redirect("scores")}>Scores</button>
                 <button onClick={() => redirect("register")}>Register</button>
             </div>
             <div className="navbar-right">
-                <button className='logout' onClick={handleSignOut}>
-                    <span className="material-icons" style={{ color: 'red' }}>
-                        logout
-                    </span>
+                <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+                    <span className="material-icons">menu</span>
+                </div>
+                <button className="logoutnonresp" onClick={handleSignOut}>
+                    <span className="material-icons" style={{ color: 'red' }}>logout</span>
                 </button>
                 <a href="https://royalcollege.lk" target="_blank" rel="noopener noreferrer">
                     <img src={schoollogo} alt="School Logo" className="schoollogo" />
                 </a>
+            </div>
+            <div className={`navbar-panel ${menuOpen ? 'open' : ''}`}>
+                <button onClick={() => redirect("members")}>Members</button>
+                <button onClick={() => redirect("scores")}>Scores</button>
+                <button onClick={() => redirect("register")}>Register</button>
+                <button className='logout' onClick={handleSignOut}>
+                    <span className="material-icons" style={{ color: 'red' }}>logout</span>
+                </button>
             </div>
         </nav>
     )
