@@ -1,0 +1,115 @@
+/* Navbar.css */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-scrolled {
+    position: fixed; /* Fix navbar at the top when scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Make sure it's on top of everything */
+}
+
+button {
+    position: relative;
+    color: whitesmoke;
+    background-color: rgb(57, 57, 57);
+    margin: 0 20px;
+}
+
+.logout {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.navbar-left, .navbar-center, .navbar-right {
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.navbar-center {
+    flex-grow: 2;
+    justify-content: center;
+    text-align: center;
+    padding-left: 40px;
+}
+
+.navbar-left {
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.navbar-right {
+    flex-grow: 1;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.wms {
+    top: 20px;
+    left: 40px;
+    height: 70px;
+    width: auto;
+}
+
+.navbar-space {
+    width: 20px;
+    transition: width 0.5s ease;
+}
+
+.schoollogo {
+    top: 40px;
+    right: 50px;
+    filter: invert(100%) sepia(0%) saturate(7495%) hue-rotate(330deg) brightness(102%) contrast(100%);
+    height: 70px;
+    width: auto;
+}
+
+.navbar-band-logo {
+    height: 60px;
+    margin-left: 15px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.rcwb-static {
+    font-family: 'Royal', cursive;
+    font-size: 2rem;
+    margin-left: 15px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.navbar-scrolled .navbar-band-logo,
+.navbar-scrolled .rcwb-static {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.navbar-scrolled .navbar-space {
+    width: 40px;
+}

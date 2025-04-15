@@ -52,7 +52,7 @@ function ScoreTable({ admin: propIsadmin, instrument: propInstrument}) {
     return(
         <>
             <div className={`tablediv visible-scrollbar ${propIsadmin === false ? 'fullwidth' : ''}`}>
-                    <table>
+                    <table style={propIsadmin? {marginLeft: '0'} : {marginLeft: '2.5vw'}}>
                         <thead>
                             <tr>
                                 <th>Name<br />

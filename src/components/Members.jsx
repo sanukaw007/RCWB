@@ -1,6 +1,7 @@
 import './Members.css';
 import { collection, getFirestore, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import Navbar from './Navbar';
 
 function Members() {
   const [name, setName] = useState('');
@@ -100,6 +101,8 @@ async function changeActive(memberId, { turnisactive }) {
 
   return (
     <>
+    <Navbar scrolled={true} />
+    <div className="search-container"></div>
       <h1>Members</h1>
       <div className='wrapper'>
         <div className='left-panel'>

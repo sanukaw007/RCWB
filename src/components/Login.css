@@ -3,7 +3,6 @@ body{
   color: white;
   font-family: 'Inter';
   overflow-x: hidden;
-  overflow-y: hidden;
   background-attachment: fixed;
   }
     input:-webkit-autofill,
@@ -36,6 +35,7 @@ body{
 #logo {
   height: 200px;
   margin-top: 0%;
+  filter: invert(60%) sepia(73%) saturate(5718%) hue-rotate(239deg) brightness(85%) contrast(82%);
 }
 
 

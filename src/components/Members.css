@@ -2,16 +2,8 @@ h1 {
     font-size: 35px;
     text-align: center;
     margin-bottom: 40px;
-    margin-top: 10px;
+    margin-top: 70px;
     top: 0%;
-}
-
-html, body, .container {
-    margin: 0;
-}
-
-body{
-    padding-left: 1.5%;
 }
 
 .container {
@@ -30,6 +22,7 @@ body{
 .left-panel {
     flex: 3;
     display: block;
+    margin-left: 1.2vw;
 }
 
 table {

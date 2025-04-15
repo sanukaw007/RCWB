@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard';
 import Scores from './components/Scores';
 import Members from './components/Members';
 import Register from './components/Register';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './logic/PrivateRoute';
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
             path="/members"
             element={
               <PrivateRoute>
-                <Members />
+                <Members  admin={true} />
               </PrivateRoute>
             }
           />
@@ -47,7 +47,7 @@ function App() {
             path="/register"
             element={
               <PrivateRoute>
-                <Register />
+                <Register  admin={true} />
               </PrivateRoute>
             }
           />

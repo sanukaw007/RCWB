@@ -1,54 +1,56 @@
-import { useEffect } from "react";
+// Dashboard.jsx
+
+import { useState, useEffect } from 'react';
 import './Dashboard.css';
-import { signOut, onAuthStateChanged } from "firebase/auth";
-import { auth } from '../firebase';
-import { useNavigate } from "react-router-dom";
+import './Navbar.css';
+import bandlogo from '../assets/bandlogo.png';
+import Navbar from './Navbar.jsx'
 
 function Dashboard() {
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (!user) navigate("/");
-        });
-        return () => unsubscribe();
-      }, [navigate]);
+  const [scrollY, setScrollY] = useState(0);
 
-    const handleSignOut = () => {
-        signOut(auth)
-          .then(() => {
-            navigate("/");
-            console.log("Signed out successfully");
-          })
-          .catch((error) => {
-            console.log("Error Signing Out!", error);
-          });
-    };
+  useEffect(() => {
+      const handleScroll = () => {
+          setScrollY(window.scrollY);
+      };
 
-    const redirect = (sub) => {
-        switch (sub) {
-            case "members":
-                navigate("/members");
-                break;
-            case "scores":
-                navigate("/scores-admin");
-                break;
-            case "register":
-                navigate("/register");
-                break;
-            default:
-                navigate("/dashboard");
-                break;
-        }
-    };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const fadeAmount = Math.min(scrollY / 400, 1);
+  const blurAmount = Math.min(scrollY / 100, 5);
 
     return (
         <>
-            <h1>Dashboard</h1>
-            <button onClick={handleSignOut}>Sign Out</button>
-            <button onClick={() => redirect("members")}>Members</button>
-            <button onClick={() => redirect("scores")}>Scores</button>
-            <button onClick={() => redirect("register")}>Register</button>
+            <Navbar />
+            <section className="hero">
+                {scrollY != null && (
+                  <div
+                    className="center-content logoandrcwb"
+                    style={{
+                      opacity: 1 - fadeAmount,
+                      filter: `blur(${blurAmount}px)`,
+                      transition: 'opacity 0.3s ease, filter 0.3s ease'
+                    }}
+                  >
+                    <img src={bandlogo} alt="Band Logo" className="band-logo" />
+                    <div className="hero-rcwb">
+                      R<span className="hide">oyal</span>
+                      C<span className="hide">ollege</span>
+                      W<span className="hide">estern</span>
+                      B<span className="hide">and</span>
+                    </div>
+                  </div>                  
+                )}
+            </section>
+
+            <section className="content-section">
+                <div className="center-content">
+                    <p>This is some sample text in the next section!</p>
+                </div>
+            </section>
         </>
     );
 }
