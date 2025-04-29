@@ -2,15 +2,15 @@
 
 ## Description
 This project is a React application that utilizes Firebase for backend services and includes various components for user interaction.
-This site was built using [GitHub Pages](https://sanukaw007.github.io/bandb/)
+This site was built using [GitHub Pages](https://sanukaw007.github.io/RCWB/)
 
 ## Installation
 To install and run the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sanukaw007/bandb.git
-   cd bandb
+   git clone https://github.com/sanukaw007/RCWB.git
+   cd RCWB
    ```
 
 2. Install the dependencies:
@@ -24,7 +24,7 @@ To install and run the project, follow these steps:
    ```
 
 ## Usage
-Once the development server is running, you can access the application at `http://localhost:5173`.
+Once the development server is running, you can access the application at `http://localhost:5173/RCWB`.
 
 ## Scripts
 - `dev`: Starts the development server using Vite.

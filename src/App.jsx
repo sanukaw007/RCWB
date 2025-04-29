@@ -12,7 +12,7 @@ import PrivateRoute from './logic/PrivateRoute';
 function App() {
   return (
     <>
-      <BrowserRouter basename="/bandb">
+      <BrowserRouter basename="/RCWB">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route

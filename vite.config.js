@@ -6,7 +6,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/bandb/',
+  base: '/RCWB/',
   build: {
     rollupOptions: {
       input: {
