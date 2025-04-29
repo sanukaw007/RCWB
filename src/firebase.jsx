@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import { initializeApp, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -5,7 +7,6 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 
-// Runs as a secret variable in the github.io version
 // Runs as normal variables in localhost (from .env)
 
 // IDS v2

@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';

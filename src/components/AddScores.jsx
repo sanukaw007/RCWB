@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import { useState } from 'react';
 import './AddScores.css';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';

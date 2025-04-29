@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import './Members.css';
 import { collection, getFirestore, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';

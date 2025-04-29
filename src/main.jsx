@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

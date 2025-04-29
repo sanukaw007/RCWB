@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import { collection, addDoc, getFirestore } from 'firebase/firestore';
   
 const AddPractice = async (type, presentIds, excusedIds, lateIds, selDate) => {

@@ -1,4 +1,4 @@
-// Dashboard.jsx
+// Copyright (C) 2025 Sanuka Weerabaddana
 
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
@@ -48,7 +48,7 @@ function Dashboard() {
 
             <section className="content-section">
                 <div className="center-content">
-                    <p>This is some sample text in the next section!</p>
+                    <p>Copyright (C) 2025 Sanuka Weerabaddana</p>
                 </div>
             </section>
         </>
