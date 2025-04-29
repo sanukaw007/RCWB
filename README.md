@@ -50,4 +50,5 @@ Sanuka Weerabaddana
 
 ## License
 This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3
+
 Copyright (C) 2025 Sanuka Weerabaddana
