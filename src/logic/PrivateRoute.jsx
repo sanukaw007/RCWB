@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './auth';
 

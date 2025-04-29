@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import './Navbar.css'
 import { useState, useEffect } from 'react';
 import bandlogo from '../assets/bandlogo.png';

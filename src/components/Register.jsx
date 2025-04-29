@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import { useState, useEffect } from "react";
 import './Register.css';
 import { collection, getFirestore, onSnapshot, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';

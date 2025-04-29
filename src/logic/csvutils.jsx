@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import Papa from 'papaparse';
 
 export const exportToCsv = (filename, data) => {

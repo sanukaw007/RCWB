@@ -43,9 +43,10 @@ This project uses Firebase for backend services.
 - music: storage references and details of music notations
 - practices: a list of practices, their attendies and late-comers/excusers.
 
-## License
-This project is licensed under the MIT License.
-
 ## Developer
 Band Side Leader for the year 2024/25
 Sanuka Weerabaddana
+
+## License
+This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3
+Copyright (C) 2025 Sanuka Weerabaddana

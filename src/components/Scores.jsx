@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import './Scores.css'
 import ScoreTable from './ScoreTable';
 import AddScores from './AddScores'

@@ -1,3 +1,4 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
 
 import { collection, getFirestore, onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import { deleteObject, getStorage, ref } from 'firebase/storage';

@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../firebase';
 

@@ -1,3 +1,5 @@
+// Copyright (C) 2025 Sanuka Weerabaddana
+
 import { useState, useEffect, useRef } from "react"
 import "./Login.css"
 import { signInWithEmailAndPassword } from 'firebase/auth';
