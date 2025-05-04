@@ -224,7 +224,7 @@ useEffect(() => {
 
   return (
     <>
-      <Navbar scrolled={true} />
+      <Navbar isAdmin={props.isAdmin} scrolled={true} />
       {showTable && (
         <h1 id="register-heading">Register</h1>
       )

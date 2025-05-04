@@ -20,7 +20,7 @@ import './Navbar.css';
 import bandlogo from '../assets/bandlogo.png';
 import Navbar from './Navbar.jsx'
 
-function Dashboard() {
+function Dashboard(props) {
 
   const [scrollY, setScrollY] = useState(0);
 
@@ -38,7 +38,7 @@ function Dashboard() {
 
     return (
         <>
-            <Navbar />
+            <Navbar isAdmin={props.isAdmin} scrolled={false} />
             <section className="hero">
                 {scrollY != null && (
                   <div
@@ -59,6 +59,11 @@ function Dashboard() {
                   </div>                  
                 )}
             </section>
+            
+{/* HISTORY OF THE BAND
+Established in 1961 under the Western Music Society, the Royal College Western band is the oldest band at Royal College. Originally focused on swing instruments, it transitioned to brass in the late ‘90s.
+The band plays a key role in college events, notably performing at the Bradby Shield. Its mission is to uphold the college’s standards while fostering the development of its members.
+The band’s diverse membership includes students from both middle and upper school. Key goals include promoting self-discipline, optimism, leadership, and musical proficiency, all through rigorous training and marching exercises. */}
 
             <section className="content-section">
                 <div className="center-content">

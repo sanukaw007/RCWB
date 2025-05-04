@@ -18,7 +18,7 @@ import { collection, getFirestore, onSnapshot, doc, deleteDoc } from 'firebase/f
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 
-function ScoreTable({ admin: propIsadmin, instrument: propInstrument}) {
+function ScoreTable({ isAdmin: propIsadmin, instrument: propInstrument}) {
     const [musics, setMusics] = useState([]);
     const db = getFirestore();
     const [searchName, setSearchName] = useState('');

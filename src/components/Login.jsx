@@ -26,14 +26,14 @@ import Note from '/src/assets/Note.svg';
 import Padlock from '/src/assets/Closed-Padlock.svg';
 
 
-export default function Login() {
+export default function Login({ setisAdmin }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) return navigate("/dashboard");
+      if (user) return navigate("/");
     });
 
   }, [])
@@ -42,7 +42,8 @@ export default function Login() {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        navigate("/dashboard")
+        navigate("/")
+        setisAdmin(true)
         const user = userCredential.user;
         console.log(user.email + " logged in.");
       })

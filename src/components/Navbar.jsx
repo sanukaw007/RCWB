@@ -42,21 +42,16 @@ function Navbar(props) {
         };
     }, []);
 
-
     const handleSignOut = () => {
         signOut(auth)
-            .then(() => navigate("/"))
+            .then(() => {window.location.href = "/"})
             .catch((error) => console.log("Error Signing Out!", error));
+    };
+    const tologin = () => {
+        navigate("/login")
     };
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (!user) navigate("/");
-        });
-        return () => unsubscribe();
-      }, [navigate]);
     
         const redirect = (sub) => {
           switch (sub) {
@@ -70,7 +65,7 @@ function Navbar(props) {
                   navigate("/register");
                   break;
               default:
-                  navigate("/dashboard");
+                  navigate("/");
                   break;
           }
       };
@@ -84,34 +79,55 @@ function Navbar(props) {
                 {scrolled &&
                     <>
                         <div className={`navbar-space`}></div>
-                        <img src={bandlogo} onClick={() => {redirect("/dashboard")}} alt="Band Logo" className={`navbar-band-logo`} />
-                        <div className={`rcwb-static`} onClick={() => {redirect("/dashboard")}}>RCWB</div>
+                        <img src={bandlogo} onClick={() => {redirect("/")}} alt="Band Logo" className={`navbar-band-logo`} />
+                        <div className={`rcwb-static`} onClick={() => {redirect("/")}}>RCWB</div>
                     </>
                 }
             </div>
-            <div className="navbar-center">
-                <button onClick={() => redirect("members")}>Members</button>
-                <button onClick={() => redirect("scores")}>Scores</button>
-                <button onClick={() => redirect("register")}>Register</button>
-            </div>
+            {props.isAdmin &&
+                <div className="navbar-center">
+                    <button onClick={() => redirect("members")}>Members</button>
+                    <button onClick={() => redirect("scores")}>Scores</button>
+                    <button onClick={() => redirect("register")}>Register</button>
+                </div>
+            }
+
             <div className="navbar-right">
                 <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
                     <span className="material-icons">menu</span>
                 </div>
-                <button className="logoutnonresp" onClick={handleSignOut}>
-                    <span className="material-icons" style={{ color: 'red' }}>logout</span>
-                </button>
+
+                {props.isAdmin && 
+                    <button style={{color: "red"}} className="logoutnonresp" onClick={handleSignOut}>
+                        <span className="material-icons" style={{ color: 'red' }}>logout</span> Log out
+                    </button>
+                }
+                {!props.isAdmin && 
+                    <button className="logoutnonresp" onClick={tologin}>
+                        <span className="material-icons" style={{ color: 'white' }}>login</span> Login
+                    </button>
+                }
+
                 <a href="https://royalcollege.lk" target="_blank" rel="noopener noreferrer">
                     <img src={schoollogo} alt="School Logo" className="schoollogo" />
                 </a>
             </div>
+
             <div className={`navbar-panel ${menuOpen ? 'open' : ''}`}>
                 <button onClick={() => redirect("members")}>Members</button>
                 <button onClick={() => redirect("scores")}>Scores</button>
                 <button onClick={() => redirect("register")}>Register</button>
-                <button className='logout' onClick={handleSignOut}>
-                    <span className="material-icons" style={{ color: 'red' }}>logout</span>
-                </button>
+
+                {props.isAdmin && 
+                    <button style={{color: "red"}} className="logout" onClick={handleSignOut}>
+                        <span className="material-icons" style={{ color: 'red' }}>logout</span> Log out
+                    </button>
+                }
+                {!props.isAdmin && 
+                    <button className="logout" onClick={tologin}>
+                        <span className="material-icons" style={{ color: 'white' }}>login</span> Login
+                    </button>
+                }
             </div>
         </nav>
     )

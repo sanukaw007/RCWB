@@ -15,6 +15,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import './App.css';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -24,38 +27,52 @@ import Register from './components/Register';
 import PrivateRoute from './logic/PrivateRoute';
 
 function App() {
+  const [isAdmin, setisAdmin] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setisAdmin(true);
+      } else {
+        setisAdmin(false);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <BrowserRouter basename="/RCWB">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route 
+            path="/login" 
+            element={<Login setisAdmin={setisAdmin} />} 
+          />
           <Route
-            path="/dashboard"
+            path="/"
             element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
+                <Dashboard isAdmin={isAdmin} />
             }
           />
           <Route
             path="/scores-admin"
             element={
               <PrivateRoute>
-                <Scores admin={true} instrument='none' />
+                <Scores isAdmin={isAdmin} instrument='none' />
               </PrivateRoute>
             }
           />
           <Route
             path="/scores"
             element={
-              <Scores admin={false} instrument="none" />
+              <Scores isAdmin={isAdmin} instrument="none" />
             }
           />
           <Route
             path="/members"
             element={
               <PrivateRoute>
-                <Members  admin={true} />
+                <Members  isAdmin={isAdmin} />
               </PrivateRoute>
             }
           />
@@ -63,7 +80,7 @@ function App() {
             path="/register"
             element={
               <PrivateRoute>
-                <Register  admin={true} />
+                <Register  isAdmin={isAdmin} />
               </PrivateRoute>
             }
           />

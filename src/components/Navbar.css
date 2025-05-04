@@ -30,11 +30,11 @@
 }
 
 .navbar-scrolled {
-    position: fixed; /* Fix navbar at the top when scrolling */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10; /* Make sure it's on top of everything */
+    z-index: 10;
 }
 
 button {
@@ -66,7 +66,7 @@ button {
     flex-grow: 2;
     justify-content: center;
     text-align: center;
-    padding-left: 40px;
+    padding-left: 90px;
 }
 
 .navbar-left {

@@ -19,7 +19,7 @@ import { collection, getFirestore, onSnapshot, addDoc, updateDoc, doc } from 'fi
 import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 
-function Members() {
+function Members(props) {
   const [name, setName] = useState('');
   const [instrument, setInstrument] = useState('');
   const [memclass, setClasses] = useState('');
@@ -117,7 +117,7 @@ async function changeActive(memberId, { turnisactive }) {
 
   return (
     <>
-    <Navbar scrolled={true} />
+    <Navbar isAdmin={props.isAdmin} scrolled={true} />
     <div className="search-container"></div>
       <h1>Members</h1>
       <div className='wrapper'>

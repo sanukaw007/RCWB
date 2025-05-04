@@ -39,6 +39,8 @@
 .band-logo {
     width: 150px;
     margin: -20px auto 20px auto;
+    opacity: 1;
+    filter: invert(0%) sepia(2%) saturate(100%) hue-rotate(169deg) brightness(119%) contrast(100%);
 }
 
 .content-section {
@@ -64,7 +66,7 @@
 
 .hero-rcwb {
     cursor: pointer;
-    font-family: 'Royal', cursive;
+    font-family: 'Royal', 'Ariel', cursive;
     font-size: 5rem;
 }
 
@@ -79,4 +81,12 @@
     max-width: 250px;
     opacity: 1;
     margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .hero-rcwb:hover .hide {
+        display: inline-block;
+        max-width: 0;
+        opacity: 0;
+    }
 }
