@@ -44,7 +44,7 @@ function Navbar(props) {
 
     const handleSignOut = () => {
         signOut(auth)
-            .then(() => {window.location.href = "/"})
+            .then(() => {window.location.href = "/RCWB/"})
             .catch((error) => console.log("Error Signing Out!", error));
     };
     const tologin = () => {
@@ -65,7 +65,8 @@ function Navbar(props) {
                   navigate("/register");
                   break;
               default:
-                  navigate("/");
+                  navigate("/RCWB/");
+                //   CHANGE
                   break;
           }
       };
@@ -114,14 +115,16 @@ function Navbar(props) {
             </div>
 
             <div className={`navbar-panel ${menuOpen ? 'open' : ''}`}>
-                <button onClick={() => redirect("members")}>Members</button>
-                <button onClick={() => redirect("scores")}>Scores</button>
-                <button onClick={() => redirect("register")}>Register</button>
-
                 {props.isAdmin && 
-                    <button style={{color: "red"}} className="logout" onClick={handleSignOut}>
-                        <span className="material-icons" style={{ color: 'red' }}>logout</span> Log out
-                    </button>
+                    <> 
+                        <div id='rcwb-static' className={`rcwb-static`} onClick={() => {redirect("/")}}>RCWB</div>
+                        <button onClick={() => redirect("members")}>Members</button>
+                        <button onClick={() => redirect("scores")}>Scores</button>
+                        <button onClick={() => redirect("register")}>Register</button>
+                        <button style={{color: "red"}} className="logout" onClick={handleSignOut}>
+                            <span className="material-icons" style={{ color: 'red' }}>logout</span> Log out
+                        </button>
+                    </>
                 }
                 {!props.isAdmin && 
                     <button className="logout" onClick={tologin}>
