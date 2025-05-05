@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from 'prop-types'
 import './App.css';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -104,5 +105,10 @@ function App() {
     </BrowserRouter>
   );
 }
+
+AppRoutes.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+  setisAdmin: PropTypes.func.isRequired,
+};
 
 export default App;

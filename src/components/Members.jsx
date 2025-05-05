@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from 'prop-types';
 import './Members.css';
 import { collection, getFirestore, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
@@ -250,5 +251,9 @@ async function changeActive(memberId, { turnisactive }) {
     </>
   );
 }
+
+Members.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+};
 
 export default Members;

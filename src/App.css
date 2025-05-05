@@ -32,6 +32,7 @@ body{
   background: linear-gradient(108deg, #000 0%, #202020 0.1%, #0D0D14 100%);
   color: white;
   font-family: 'Inter';
+  min-width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
   background-attachment: fixed;
@@ -45,6 +46,7 @@ body.scroll-enabled {
 
 html, body {
   background-color: #0D0D14;
+  overflow-x: hidden;
   min-height: 100vh;
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);

@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from 'prop-types';
 import { collection, getFirestore, onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import { useEffect, useState } from 'react';
@@ -132,4 +133,9 @@ function ScoreTable({ isAdmin: propIsadmin, instrument: propInstrument}) {
     )
 }
 
-export default ScoreTable
+ScoreTable.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+  instrument: PropTypes.string.isRequired,
+};
+
+export default ScoreTable;

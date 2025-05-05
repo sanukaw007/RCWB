@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from "prop-types"
 import { useState, useEffect, useRef } from "react"
 import "./Login.css"
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -118,3 +119,6 @@ export default function Login({ setisAdmin }) {
     </div>
   )
 }
+Login.propTypes = {
+  setisAdmin: PropTypes.func.isRequired,
+};

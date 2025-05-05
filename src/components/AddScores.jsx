@@ -48,7 +48,7 @@ function AddScores() {
             return;
         }
         const storage = getStorage();
-        const filename = '' ? 'No file chosen' : file.name;
+        const filename = file ? file.name : 'No file chosen';
         const storageRef = ref(storage, `music/${instrument}/${filename}`);
         await uploadBytes(storageRef, file);
         const downloadUrl = await getDownloadURL(storageRef);

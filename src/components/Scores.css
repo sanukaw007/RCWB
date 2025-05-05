@@ -27,7 +27,7 @@
     vertical-align: text-top;
 }
 
-html, body, .container {
+.container {
     margin: 0;
 }
 
@@ -125,7 +125,7 @@ a:link, a:visited, a:active {
 }
 
 .fullwidth {
-    width: 100vw;
+    width: 100%;
 }
 
 @media only screen and (max-width: 600px) {

@@ -14,12 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from 'prop-types';
 import './Navbar.css'
 import { useState, useEffect } from 'react';
 import bandlogo from '../assets/bandlogo.png';
 import schoollogo from '../assets/royal.png';
 import westernlogo from '../assets/wmslogo.png';
-import { signOut, onAuthStateChanged } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { auth } from '../firebase';
 import { useNavigate } from "react-router-dom"
 
@@ -135,5 +136,11 @@ function Navbar(props) {
         </nav>
     )
 }
+
+
+Navbar.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+  scrolled: PropTypes.bool.isRequired,
+};
 
 export default Navbar;

@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import './Register.css';
 import { collection, getFirestore, onSnapshot, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { formatDate, checkStatus, AddPractice } from "../logic/RegisterFuncs";
@@ -404,5 +405,9 @@ useEffect(() => {
     </>
   );
 }
+
+Register.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+};
 
 export default Register;

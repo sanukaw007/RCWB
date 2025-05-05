@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from 'prop-types';
 import './Scores.css'
 import ScoreTable from './ScoreTable';
 import AddScores from './AddScores'
@@ -38,5 +39,10 @@ function Scores(props) {
     </>
     )
 }
+
+Scores.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+  instrument: PropTypes.string,
+};
 
 export default Scores

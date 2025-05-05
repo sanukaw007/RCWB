@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import './Navbar.css';
@@ -73,5 +74,8 @@ The band’s diverse membership includes students from both middle and upper sch
         </>
     );
 }
+Dashboard.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+};
 
 export default Dashboard;
