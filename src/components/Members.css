@@ -244,9 +244,7 @@ input:checked + .slider:before {
 }
 
 @media only screen and (max-width: 600px) {
-    body{
-        padding-left: 2%;
-    }
+
     .left-panel {
         display: none;
     }
@@ -254,6 +252,7 @@ input:checked + .slider:before {
         margin-top: 5%;
     }
     .tablediv {
+        margin-left: 2%;
         height: 70vh;
         width: 97vw;
     }
