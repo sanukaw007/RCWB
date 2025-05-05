@@ -28,13 +28,28 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+body{
+  background: linear-gradient(108deg, #000 0%, #202020 0.1%, #0D0D14 100%);
+  color: white;
+  font-family: 'Inter';
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-attachment: fixed;
   margin: 0;
-  padding: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+}
+
+body.scroll-enabled {
+  overflow-y: auto;
+}
+
+
+html, body {
+  background-color: #0D0D14;
   min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 h1 {

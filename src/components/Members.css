@@ -19,7 +19,7 @@ h1 {
     text-align: center;
     margin-bottom: 40px;
     margin-top: 70px;
-    top: 0%;
+    top: 5%;
 }
 
 .container {
@@ -244,12 +244,11 @@ input:checked + .slider:before {
 }
 
 @media only screen and (max-width: 600px) {
-
     .left-panel {
         display: none;
     }
     h1 {
-        margin-top: 5%;
+        margin-top: 70px;
     }
     .tablediv {
         margin-left: 2%;

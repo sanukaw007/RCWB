@@ -227,8 +227,7 @@ useEffect(() => {
       <Navbar isAdmin={props.isAdmin} scrolled={true} />
       {showTable && (
         <h1 id="register-heading">Register</h1>
-      )
-      }
+      )}
       {showTable ? (
         <>
           <button id="tick-button" onClick={handleAddPractice}>
@@ -322,7 +321,7 @@ useEffect(() => {
         </>
       ) : (
         <div>
-          <button id="tick-button" onClick={handleAddPractice}>
+          <button id="tick-button-viewtable" onClick={handleAddPractice}>
             <span className="material-icons" id="add-tick" style={{ color: 'whitesmoke' }}>
               arrow_back
             </span>{" "}

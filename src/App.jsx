@@ -18,13 +18,71 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Scores from './components/Scores';
 import Members from './components/Members';
 import Register from './components/Register';
 import PrivateRoute from './logic/PrivateRoute';
+
+function AppRoutes({ isAdmin, setisAdmin }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      document.body.classList.add('scroll-enabled');
+    } else {
+      document.body.classList.remove('scroll-enabled');
+    }
+  }, [location]);
+
+  return (
+    <Routes>
+      <Route 
+        path="/login" 
+        element={<Login setisAdmin={setisAdmin} />} 
+      />
+      <Route
+        path="/"
+        element={
+            <Dashboard isAdmin={isAdmin} />
+        }
+      />
+      <Route
+        path="/scores-admin"
+        element={
+          <PrivateRoute>
+            <Scores isAdmin={isAdmin} instrument='none' />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/scores"
+        element={
+          <Scores isAdmin={false} instrument="none" />
+        }
+      />
+      <Route
+        path="/members"
+        element={
+          <PrivateRoute>
+            <Members  isAdmin={isAdmin} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PrivateRoute>
+            <Register  isAdmin={isAdmin} />
+          </PrivateRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  );
+}
 
 function App() {
   const [isAdmin, setisAdmin] = useState(false);
@@ -41,53 +99,9 @@ function App() {
   }, []);
 
   return (
-    <>
-      <BrowserRouter basename="/RCWB">
-        <Routes>
-          <Route 
-            path="/login" 
-            element={<Login setisAdmin={setisAdmin} />} 
-          />
-          <Route
-            path="/"
-            element={
-                <Dashboard isAdmin={isAdmin} />
-            }
-          />
-          <Route
-            path="/scores-admin"
-            element={
-              <PrivateRoute>
-                <Scores isAdmin={isAdmin} instrument='none' />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/scores"
-            element={
-              <Scores isAdmin={isAdmin} instrument="none" />
-            }
-          />
-          <Route
-            path="/members"
-            element={
-              <PrivateRoute>
-                <Members  isAdmin={isAdmin} />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PrivateRoute>
-                <Register  isAdmin={isAdmin} />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter basename="/RCWB">
+      <AppRoutes isAdmin={isAdmin} setisAdmin={setisAdmin} />
+    </BrowserRouter>
   );
 }
 
