@@ -25,7 +25,11 @@ import { auth } from '../firebase';
 import { useNavigate } from "react-router-dom"
 
 function Navbar(props) {
-    const [scrolled, setScrolled] = useState(props.scrolled);
+    const [internalMenuOpen, setInternalMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(props.scrolled || false);
+    const isAdmin = props.isAdmin || false;
+    const menuOpen = props.menuOpen !== undefined ? props.menuOpen : internalMenuOpen;
+    const setMenuOpen = props.setMenuOpen !== undefined ? props.setMenuOpen : setInternalMenuOpen;
     const navbarRef = useRef(null);
 
     useEffect(() => {
@@ -46,7 +50,7 @@ function Navbar(props) {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-                props.setMenuOpen(false);
+                setMenuOpen(false);
             }
         };
     
@@ -55,7 +59,7 @@ function Navbar(props) {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [props]);    
+    }, [setMenuOpen]);        
 
     const handleSignOut = () => {
         signOut(auth)
@@ -100,7 +104,7 @@ function Navbar(props) {
                     </>
                 }
             </div>
-            {props.isAdmin &&
+            {isAdmin &&
                 <div className="navbar-center">
                     <button onClick={() => redirect("members")}>Members</button>
                     <button onClick={() => redirect("scores")}>Scores</button>
@@ -109,16 +113,16 @@ function Navbar(props) {
             }
 
             <div className="navbar-right">
-                <div className="menu-toggle" onClick={() => props.setMenuOpen(!props.menuOpen)}>
+                <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
                     <span className="material-icons">menu</span>
                 </div>
 
-                {props.isAdmin && 
+                {isAdmin && 
                     <button style={{color: "red"}} className="logoutnonresp" onClick={handleSignOut}>
                         <span className="material-icons" style={{ color: 'red' }}>logout</span> Log out
                     </button>
                 }
-                {!props.isAdmin && 
+                {!isAdmin && 
                     <button className="logoutnonresp" onClick={tologin}>
                         <span className="material-icons" style={{ color: 'white' }}>login</span> Login
                     </button>
@@ -129,8 +133,8 @@ function Navbar(props) {
                 </a>
             </div>
 
-            <div className={`navbar-panel ${props.menuOpen ? 'open' : ''}`}>
-                {props.isAdmin && 
+            <div className={`navbar-panel ${menuOpen ? 'open' : ''}`}>
+                {isAdmin && 
                     <> 
                         <div id='rcwb-static' className={`rcwb-static`} onClick={() => {redirect("/")}}>RCWB</div>
                         <button onClick={() => redirect("members")}>Members</button>
@@ -154,9 +158,9 @@ function Navbar(props) {
 
 Navbar.propTypes = {
     isAdmin: PropTypes.bool.isRequired,
-    scrolled: PropTypes.bool.isRequired,
-    menuOpen: PropTypes.bool.isRequired,
-    setMenuOpen: PropTypes.func.isRequired,
-}; 
+    scrolled: PropTypes.bool,
+    menuOpen: PropTypes.bool,
+    setMenuOpen: PropTypes.func,
+};
 
 export default Navbar;

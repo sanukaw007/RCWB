@@ -28,10 +28,10 @@ import Padlock from '/src/assets/Closed-Padlock.svg';
 
 
 export default function Login({ setisAdmin }) {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) return navigate("/");

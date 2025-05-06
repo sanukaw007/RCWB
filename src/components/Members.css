@@ -243,7 +243,7 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .left-panel {
         display: none;
     }

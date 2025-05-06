@@ -15,7 +15,7 @@
  along with this program.  If not, see <https://www.gnu.org/licenses/>. */
 
 .hero {
-    height: 100vh; /* Full height of the viewport */
+    height: 100vh;
     width: 100%;
     background-image: url('../assets/bandphoto.jpg');
     background-size: cover;
@@ -84,9 +84,12 @@
 }
 
 @media (max-width: 768px) {
-    .hero-rcwb:hover .hide {
-        display: inline-block;
-        max-width: 0;
+    .hero-rcwb .hide {
+        display: none;
+        max-width: none;
+        width: 0;
         opacity: 0;
+        transition: none;
+        margin-right: 0;
     }
 }

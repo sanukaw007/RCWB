@@ -21,11 +21,11 @@ import { useEffect, useState } from 'react';
 
 function ScoreTable({ isAdmin: propIsadmin, instrument: propInstrument}) {
     const [musics, setMusics] = useState([]);
-    const db = getFirestore();
     const [searchName, setSearchName] = useState('');
     const [filterInstrument, setFilterInstrument] = useState('');
     const [filterType, setFilterType] = useState('');
-    useEffect(
+    const db = getFirestore();
+    useEffect(     
         () => 
         onSnapshot(collection(db, "music"), (snapshot) =>
             setMusics(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
