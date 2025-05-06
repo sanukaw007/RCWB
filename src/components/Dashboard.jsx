@@ -22,7 +22,7 @@ import bandlogo from '../assets/bandlogo.png';
 import Navbar from './Navbar.jsx'
 
 function Dashboard(props) {
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -38,8 +38,8 @@ function Dashboard(props) {
   const blurAmount = Math.min(scrollY / 100, 5);
 
     return (
-        <>
-            <Navbar isAdmin={props.isAdmin} scrolled={false} />
+        <div>
+            <Navbar isAdmin={props.isAdmin} scrolled={scrollY > 0} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
             <section className="hero">
                 {scrollY != null && (
                   <div
@@ -52,10 +52,10 @@ function Dashboard(props) {
                   >
                     <img src={bandlogo} alt="Band Logo" className="band-logo" />
                     <div className="hero-rcwb">
-                      R<span className="hide">oyal</span>
-                      C<span className="hide">ollege</span>
-                      W<span className="hide">estern</span>
-                      B<span className="hide">and</span>
+                      R<span className="hide">oyal </span>
+                      C<span className="hide">ollege </span>
+                      W<span className="hide">estern </span>
+                      B<span className="hide">and </span>
                     </div>
                   </div>                  
                 )}
@@ -71,7 +71,7 @@ The band’s diverse membership includes students from both middle and upper sch
                     <p>Copyright (C) 2025 Sanuka Weerabaddana</p>
                 </div>
             </section>
-        </>
+        </div>
     );
 }
 Dashboard.propTypes = {

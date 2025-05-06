@@ -16,7 +16,7 @@
 
 import PropTypes from 'prop-types';
 import './Navbar.css'
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import bandlogo from '../assets/bandlogo.png';
 import schoollogo from '../assets/royal.png';
 import westernlogo from '../assets/wmslogo.png';
@@ -25,8 +25,8 @@ import { auth } from '../firebase';
 import { useNavigate } from "react-router-dom"
 
 function Navbar(props) {
-    const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(props.scrolled);
+    const navbarRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,16 +43,30 @@ function Navbar(props) {
         };
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+                props.setMenuOpen(false);
+            }
+        };
+    
+        document.addEventListener('mousedown', handleClickOutside);
+    
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [props]);    
+
     const handleSignOut = () => {
         signOut(auth)
             .then(() => {window.location.href = "/RCWB/"})
             .catch((error) => console.log("Error Signing Out!", error));
     };
+    const navigate = useNavigate();
+
     const tologin = () => {
         navigate("/login")
     };
-
-    const navigate = useNavigate();
     
         const redirect = (sub) => {
           switch (sub) {
@@ -73,12 +87,12 @@ function Navbar(props) {
       };
 
     return(
-        <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+        <nav ref={navbarRef} className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
             <div className="navbar-left">
                 <a href="https://royalcollege.lk/clubs-and-societies/western-music-society/" target="_blank" rel="noopener noreferrer">
                     <img src={westernlogo} alt="Western Music Society Logo" className="wms" />
                 </a>
-                {scrolled &&
+                {scrolled==true &&
                     <>
                         <div className={`navbar-space`}></div>
                         <img src={bandlogo} onClick={() => {redirect("/")}} alt="Band Logo" className={`navbar-band-logo`} />
@@ -95,7 +109,7 @@ function Navbar(props) {
             }
 
             <div className="navbar-right">
-                <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+                <div className="menu-toggle" onClick={() => props.setMenuOpen(!props.menuOpen)}>
                     <span className="material-icons">menu</span>
                 </div>
 
@@ -115,7 +129,7 @@ function Navbar(props) {
                 </a>
             </div>
 
-            <div className={`navbar-panel ${menuOpen ? 'open' : ''}`}>
+            <div className={`navbar-panel ${props.menuOpen ? 'open' : ''}`}>
                 {props.isAdmin && 
                     <> 
                         <div id='rcwb-static' className={`rcwb-static`} onClick={() => {redirect("/")}}>RCWB</div>
@@ -139,8 +153,10 @@ function Navbar(props) {
 
 
 Navbar.propTypes = {
-  isAdmin: PropTypes.bool.isRequired,
-  scrolled: PropTypes.bool.isRequired,
-};
+    isAdmin: PropTypes.bool.isRequired,
+    scrolled: PropTypes.bool.isRequired,
+    menuOpen: PropTypes.bool.isRequired,
+    setMenuOpen: PropTypes.func.isRequired,
+}; 
 
 export default Navbar;
