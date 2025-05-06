@@ -20,6 +20,7 @@ import './Dashboard.css';
 import './Navbar.css';
 import bandlogo from '../assets/bandlogo.png';
 import Navbar from './Navbar.jsx'
+import ResolverEffect from '../logic/ResolverEffect.jsx';
 
 function Dashboard(props) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,6 +38,22 @@ function Dashboard(props) {
   const fadeAmount = Math.min(scrollY / 400, 1);
   const blurAmount = Math.min(scrollY / 100, 5);
 
+  const [smallscreen, setSmallscreen] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSmallscreen(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const [hover, setHover] = useState(false);
+
     return (
         <div>
             <Navbar isAdmin={props.isAdmin} scrolled={scrollY > 0} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -51,20 +68,23 @@ function Dashboard(props) {
                     }}
                   >
                     <img src={bandlogo} alt="Band Logo" className="band-logo" />
-                    <div className="hero-rcwb">
-                      R<span className="hide">oyal </span>
-                      C<span className="hide">ollege </span>
-                      W<span className="hide">estern </span>
-                      B<span className="hide">and </span>
-                    </div>
-                  </div>                  
+                      {smallscreen ?
+                        <div>
+                          <div className='hero-rcwb'>RCWB</div>
+                        </div>
+                      :
+                        <div className="hero-rcwb" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+                          <ResolverEffect fallback="RCWB" active={hover} text="Royal College Western Band" />
+                        </div>
+                      }
+                  </div>
                 )}
             </section>
             
-{/* HISTORY OF THE BAND
-Established in 1961 under the Western Music Society, the Royal College Western band is the oldest band at Royal College. Originally focused on swing instruments, it transitioned to brass in the late ‘90s.
-The band plays a key role in college events, notably performing at the Bradby Shield. Its mission is to uphold the college’s standards while fostering the development of its members.
-The band’s diverse membership includes students from both middle and upper school. Key goals include promoting self-discipline, optimism, leadership, and musical proficiency, all through rigorous training and marching exercises. */}
+            {/* HISTORY OF THE BAND
+            Established in 1961 under the Western Music Society, the Royal College Western band is the oldest band at Royal College. Originally focused on swing instruments, it transitioned to brass in the late ‘90s.
+            The band plays a key role in college events, notably performing at the Bradby Shield. Its mission is to uphold the college’s standards while fostering the development of its members.
+            The band’s diverse membership includes students from both middle and upper school. Key goals include promoting self-discipline, optimism, leadership, and musical proficiency, all through rigorous training and marching exercises. */}
 
             <section className="content-section">
                 <div className="center-content">

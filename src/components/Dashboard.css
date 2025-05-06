@@ -37,7 +37,7 @@
 }
 
 .band-logo {
-    width: 150px;
+    width: 170px;
     margin: -20px auto 20px auto;
     opacity: 1;
     filter: invert(0%) sepia(2%) saturate(100%) hue-rotate(169deg) brightness(119%) contrast(100%);
@@ -68,28 +68,5 @@
     cursor: pointer;
     font-family: 'Royal', 'Ariel', cursive;
     font-size: 5rem;
-}
-
-.hero-rcwb .hide {
-    display: inline-block;
-    max-width: 0;
-    opacity: 0;
-    transition: max-width 1s, opacity 1.5s;
-}
-
-.hero-rcwb:hover .hide {
-    max-width: 250px;
-    opacity: 1;
-    margin-right: 10px;
-}
-
-@media (max-width: 768px) {
-    .hero-rcwb .hide {
-        display: none;
-        max-width: none;
-        width: 0;
-        opacity: 0;
-        transition: none;
-        margin-right: 0;
-    }
+    min-width: 20%;
 }
